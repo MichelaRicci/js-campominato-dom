@@ -52,8 +52,8 @@ function getRandomNumber (min, max) {
 // Prendo elementi dalla pagina 
 
 const grid = document.getElementById('grid');
-
 const play = document.getElementById('play');
+const score = document.getElementById('score');;
 
 
 // Impostazioni griglia
@@ -62,9 +62,13 @@ const rows = 10;
 const cols = 10;
 const totalCells = rows * cols; 
 
+
+// Bombe e punti 
 const totalBombs = 16;
 
 let bombsArray;
+
+let points;
 
 
 
@@ -77,6 +81,8 @@ play.addEventListener('click', function(){
 
     // Svuoto la griglia 
     grid.innerHTML = '';
+
+    points = 0;
     
 
     bombsArray = bombGenerator(); 
@@ -86,7 +92,7 @@ play.addEventListener('click', function(){
 
 
     //Randomizzo 100 celle
-    for(let i = 1; i < totalCells; i++) {
+    for(let i = 1; i <= totalCells; i++) {
         
         // Creazione cella
         const cell = createCell(i);
@@ -99,11 +105,15 @@ play.addEventListener('click', function(){
             
             // Numeri all'interno della cella 
 
-            const content = i;
+            const content = i++;
 
             cell.append(content);
 
-            console.log(i);
+            console.log(content);
+
+            points++;
+
+        
         
 
         });
@@ -112,6 +122,6 @@ play.addEventListener('click', function(){
     }
 
 
-
+    score.innerText = "Punteggio: " + points;
 
 })
