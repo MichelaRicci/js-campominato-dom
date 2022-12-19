@@ -23,6 +23,32 @@ const createCell = (content) => {
     return cell;
     
 }
+
+
+
+    // Creo le bombe 
+    function bombGenerator () {
+        // creo array 
+        const bombs = [];
+    
+        // randomizzo le bombe e le aggiungo all'array
+        while (bombs.length < 16){
+            const bomb = getRandomNumber(1, 100);
+    
+            if (!bombs.includes(bomb)) {
+                bombs.push(bomb);
+
+                console.log(bombs);
+            }
+        }
+        
+        return bombs;
+    }
+
+function getRandomNumber (min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 // Prendo elementi dalla pagina 
 
 const grid = document.getElementById('grid');
@@ -36,6 +62,11 @@ const rows = 10;
 const cols = 10;
 const totalCells = rows * cols; 
 
+const totalBombs = 16;
+
+let bombsArray;
+
+
 
 // Generazione celle al click del pulsante 
 
@@ -46,6 +77,12 @@ play.addEventListener('click', function(){
 
     // Svuoto la griglia 
     grid.innerHTML = '';
+    
+
+    bombsArray = bombGenerator(); 
+
+    
+
 
 
     //Randomizzo 100 celle
@@ -67,6 +104,7 @@ play.addEventListener('click', function(){
             cell.append(content);
 
             console.log(i);
+        
 
         });
 
@@ -74,5 +112,6 @@ play.addEventListener('click', function(){
     }
 
 
-})
 
+
+})
