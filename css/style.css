@@ -10,7 +10,7 @@
 
     margin: 30px auto;
 
-    background-color: white;
+    background-color: #7FFFD3;
 }
 
 #grid .cell {
@@ -27,7 +27,7 @@
 
 
 #grid .cell.clicked {
-    background-color: #7FFFD3;
+    background-color: #46a7d8;
 }
 
 
