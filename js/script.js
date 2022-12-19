@@ -49,6 +49,21 @@ function getRandomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function isBomb(value) {
+    for (let i = 0; i < bombsArray.length; i++) {
+
+        if (bombsArray[i] == value) {
+
+            this.classList.add("bomb");
+
+            return true;
+        }
+        return false;
+    }
+}
+
+
+
 // Prendo elementi dalla pagina 
 
 const grid = document.getElementById('grid');
@@ -68,7 +83,7 @@ const totalBombs = 16;
 
 let bombsArray;
 
-let points;
+let points = '';
 
 
 
@@ -76,7 +91,7 @@ let points;
 
 play.addEventListener('click', function(){
 
-    // Cambio testo interno del punlsante 
+    // Cambio testo interno del pulsante 
     play.innerText = 'Ricomincia';
 
     // Svuoto la griglia 
@@ -105,16 +120,13 @@ play.addEventListener('click', function(){
             
             // Numeri all'interno della cella 
 
-            const content = i++;
+            const content = i;
 
             cell.append(content);
 
             console.log(content);
 
             points++;
-
-        
-        
 
         });
 
