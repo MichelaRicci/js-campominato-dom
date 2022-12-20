@@ -54,7 +54,9 @@ function isBomb(value) {
 
         if (bombsArray[i] == value) {
 
-            this.classList.add("bomb");
+           this.classList.add('bomb');
+
+           console.log(isBomb);
 
             return true;
         }
