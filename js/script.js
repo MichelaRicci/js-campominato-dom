@@ -85,7 +85,9 @@ const totalBombs = 16;
 
 let bombsArray;
 
-let points = '';
+
+// Variabile punteggio 
+let points = 0;
 
 
 
@@ -99,15 +101,9 @@ play.addEventListener('click', function(){
     // Svuoto la griglia 
     grid.innerHTML = '';
 
-    points = 0;
-    
-
     bombsArray = bombGenerator(); 
 
     
-
-
-
     //Randomizzo 100 celle
     for(let i = 1; i <= totalCells; i++) {
         
@@ -117,6 +113,12 @@ play.addEventListener('click', function(){
 
         // Aggiungo eventListener 
         cell.addEventListener('click', () => {
+
+
+        if (cell.classList.contains('clicked')) {
+            return;
+        }
+        
             cell.classList.add('clicked');
 
             
@@ -128,14 +130,15 @@ play.addEventListener('click', function(){
 
             console.log(content);
 
-            points++;
+            score.innerText = "Punteggio: " + ++points;
 
+            console.log(points);
         });
 
         grid.appendChild(cell);
     }
 
 
-    score.innerText = "Punteggio: " + points;
+
 
 })
